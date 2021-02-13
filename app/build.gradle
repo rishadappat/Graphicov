@@ -1,0 +1,122 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: "kotlin-kapt"
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.appat.graphicov"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 8
+        versionName "1.1"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        minifiedDebug {
+            versionNameSuffix ".dev"
+            debuggable true
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            versionNameSuffix ".dev"
+            debuggable true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation 'com.google.android.material:material:1.3.0-rc01'
+
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
+
+    implementation 'com.google.android.play:core:1.9.1'
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+//    implementation 'com.google.maps.android:maps-v3-ktx:2.1.2'
+//    implementation 'com.google.maps.android:maps-utils-v3-ktx:2.1.2'
+
+    implementation 'com.google.android.libraries.maps:maps:3.1.0-beta'
+
+    implementation "com.hanks:htextview-base:$htextview_version"
+    implementation "com.hanks:htextview-evaporate:$htextview_version"
+
+    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha06"
+    implementation "androidx.datastore:datastore-core:1.0.0-alpha06"
+
+    implementation 'androidx.preference:preference-ktx:1.1.1'
+
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    implementation ("com.github.bumptech.glide:glide:4.11.0") {
+        exclude group: "com.android.support"
+    }
+    kapt 'androidx.annotation:annotation:1.1.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation ("com.github.bumptech.glide:glide:4.11.0@aar") {
+        transitive = true
+    }
+
+    implementation 'com.airbnb.android:lottie:3.5.0'
+
+    implementation "androidx.browser:browser:1.3.0"
+
+    implementation platform('com.google.firebase:firebase-bom:26.3.0')
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation "androidx.core:core-ktx:1.3.2"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+    mavenCentral()
+}

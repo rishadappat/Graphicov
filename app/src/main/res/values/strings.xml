@@ -1,0 +1,64 @@
+<resources>
+    <string name="google_map_key">AIzaSyA5JohNzj_3z89mEwlYf__C08w1uUnKUkY</string>
+    <string name="app_name">GraphiCov</string>
+    <string name="baseUrl">https://disease.sh/v3/covid-19/</string>
+    <string name="apiSourceUrl">https://disease.sh</string>
+
+    <string name="statistics">Statistics</string>
+    <string name="map">Map</string>
+    <string name="fullscreen">Fullscreen</string>
+    <string name="settings">Settings</string>
+    <string name="my_country">My Country</string>
+    <string name="global">Global</string>
+    <string name="choose_country">Choose Your Country</string>
+    <string name="global_data">Global Data</string>
+    <string name="country">Country</string>
+
+    <string name="effected">Effected</string>
+    <string name="death">Death</string>
+    <string name="recovered">Recovered</string>
+
+    <string name="effected_per_day">Effected Per Day</string>
+    <string name="death_per_day">Death Per Day</string>
+    <string name="recovered_per_day">Recovered Per Day</string>
+
+    <string name="active">Active</string>
+    <string name="serious">Serious</string>
+
+    <string name="total">Total</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="lastUpdated">Last updated: %S</string>
+
+    <string name="search">Search</string>
+    <string name="proceed">Proceed</string>
+    <string name="select">Select</string>
+    <string name="select_country">Select Country</string>
+    <string name="confirm">Confirm</string>
+    <string name="about">About</string>
+
+    <string name="thank_you_for_downloading">Thank you for downloading</string>
+    <string name="please_choose_country">Please choose your country to continue…</string>
+    <string name="change_country">Change Country</string>
+    <string name="change">Change</string>
+
+    <string name="package_name">Package Name</string>
+    <string name="version">Version</string>
+    <string name="apiSource">Data Source</string>
+    <string name="linked_in">LinkedIn</string>
+    <string name="linked_in_url">https://www.linkedin.com/in/rishadappat</string>
+    <string name="gitHub">GitHub</string>
+    <string name="gitHub_url">https://github.com/rishadappat</string>
+    <string name="email">Email</string>
+    <string name="email_address">rishadappat@gmail.com</string>
+    <string name="stackOverFlow">Stackoverflow</string>
+    <string name="stackOverFlow_url">https://stackoverflow.com/users/4707780/rishad-appat</string>
+
+    <string name="rate">Rate</string>
+    <string name="rate_desc">Rate the application in Play Store</string>
+    <string name="share">Share</string>
+    <string name="share_desc">Share the application to your contacts</string>
+    <string name="analytics">Analytics</string>
+    <string name="analytics_desc">Help us to make the application better</string>
+    <string name="play_store_url">https://play.google.com/store/apps/details?id=%s</string>
+</resources>

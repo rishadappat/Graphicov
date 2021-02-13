@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "439888270424",
+    "project_id": "graphicov-12f3b",
+    "storage_bucket": "graphicov-12f3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:439888270424:android:8bdf7a126511b75ca7a62d",
+        "android_client_info": {
+          "package_name": "com.appat.graphicov"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "439888270424-dkjn6mc15d8ffo28aa5tk738etr7i5i6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqr5erZb6Yxo0cBhBVfCi9QWE_nuA9jxk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "439888270424-dkjn6mc15d8ffo28aa5tk738etr7i5i6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

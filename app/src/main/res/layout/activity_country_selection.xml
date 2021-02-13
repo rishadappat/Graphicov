@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.CountrySelectionActivity"
+    android:fitsSystemWindows="true"
+    android:background="@color/windowBackground"
+    app:statusBarBackground="@color/colorPrimaryDark">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/choose_country"
+            android:fitsSystemWindows="false"
+            android:textAlignment="center"
+            app:layout_collapseMode="pin"
+            app:titleTextColor="@color/white"
+            android:background="@color/colorPrimaryDark"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="20dp"
+            android:textColorHint="@color/white_tr_50"
+            android:textColor="@color/white"
+            android:hint="@string/search"
+            android:drawablePadding="15dp"
+            android:drawableStart="@drawable/search"
+            android:background="@color/colorPrimaryDark"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/searchView"
+            android:layout_above="@id/confirmButton"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/confirmButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|end"
+            app:backgroundTint="@color/colorAccent"
+            android:text="@string/confirm"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            app:cornerRadius="0dp"
+            android:layout_alignParentBottom="true"
+            android:scaleType="centerInside"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:elevation="10dp"
+            android:enabled="false"/>
+    </RelativeLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

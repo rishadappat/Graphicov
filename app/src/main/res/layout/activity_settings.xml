@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/windowBackground"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.SettingsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/settings"
+            android:layout_alignParentTop="true"
+            android:fitsSystemWindows="false"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:layout_marginTop="40dp"
+            android:layout_below="@id/toolBar"/>
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:paddingVertical="16dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/selectCountryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/change_country"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textAlignment="viewStart"
+            android:layout_marginTop="40dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/titleTextView"/>
+
+        <RelativeLayout
+            android:id="@+id/selectedCountryContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_below="@+id/selectCountryText">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/flagImage"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="centerInside"
+                android:padding="0dp"/>
+
+            <TextView
+                android:id="@+id/countryName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/flagImage"
+                android:textColor="@color/white"
+                android:layout_marginStart="10dp"
+                android:layout_toStartOf="@id/tickContainer"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+
+            <RelativeLayout
+                android:id="@+id/tickContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/changeButton"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    app:cornerRadius="20dp"
+                    app:strokeColor="@color/colorAccent"
+                    app:strokeWidth="2dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:text="@string/change"
+                    android:textColor="@color/colorAccent"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/aboutBottomSheet"
+        android:fitsSystemWindows="true"
+        layout="@layout/bottom_sheet_persistent" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

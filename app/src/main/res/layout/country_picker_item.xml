@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/flagImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:padding="15dp"/>
+
+    <TextView
+        android:id="@+id/countryName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/flagImage"
+        android:textColor="@color/white"
+        android:layout_marginEnd="16dp"
+        android:layout_toStartOf="@id/tickContainer"
+        android:textSize="16sp" />
+
+
+    <RelativeLayout
+        android:id="@+id/tickContainer"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/tick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true"
+            app:srcCompat="@drawable/selected"/>
+    </RelativeLayout>
+</RelativeLayout>

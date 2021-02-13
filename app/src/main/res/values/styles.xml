@@ -1,0 +1,53 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="android:statusBarColor">@color/transparent</item>
+        <item name="android:navigationBarColor">@color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:colorEdgeEffect">@color/colorAccent</item>
+        <item name="textAllCaps">false</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="shapeAppearanceOverlay">@style/CustomShapeAppearanceOverlay.MaterialComponents.BottomSheet</item>
+    </style>
+
+    <style name="CustomShapeAppearanceOverlay.MaterialComponents.BottomSheet" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+    </style>
+
+    <style name="CardViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="android:ambientShadowAlpha">0.78</item>
+        <item name="android:spotShadowAlpha">0.2</item>
+    </style>
+
+    <style name="CollapsedAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/toolBarTextColor</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="ExpandAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/toolBarTextColor</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Rounded" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">25dp</item>
+    </style>
+
+</resources>

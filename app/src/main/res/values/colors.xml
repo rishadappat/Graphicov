@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryLight">#0D67A1</color>
+    <color name="colorPrimary">#012339</color>
+    <color name="colorPrimaryDark">#021019</color>
+    <color name="windowBackground">#021725</color>
+    <color name="colorSecondary">#747474</color>
+    <color name="colorSecondaryDark">#505050</color>
+    <color name="colorAccent">#facc17</color>
+    <color name="colorAccentDark">#b9961e</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="black_tr_50">#80000000</color>
+    <color name="toolBarTextColor">#ffffff</color>
+    <color name="toolBarTextColor_tr_50">#80ffffff</color>
+    <color name="black_tr_70">#B3000000</color>
+    <color name="white_tr_70">#B3FFFFFF</color>
+    <color name="white_tr_50">#80FFFFFF</color>
+    <color name="white_tr_30">#4DFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="textColorLight">#9FD9FF</color>
+
+    <color name="affected">#FFA521</color>
+    <color name="affected_tr_30">#4DFFA521</color>
+    <color name="affectedDark">#CC841B</color>
+    <color name="death">#ff5959</color>
+    <color name="death_tr_30">#4Dff5959</color>
+    <color name="deathDark">#C83939</color>
+    <color name="recovered">#18B54C</color>
+    <color name="recovered_tr_30">#4D18B54C</color>
+    <color name="recoveredDark">#0F8E39</color>
+    <color name="active">#4cb5ff</color>
+    <color name="active_tr_30">#4D4CB5FF</color>
+    <color name="activeDark">#1B78BA</color>
+    <color name="serious">#9059ff</color>
+    <color name="serious_tr_30">#4D9059ff</color>
+    <color name="seriousDark">#256831D8</color>
+</resources>
