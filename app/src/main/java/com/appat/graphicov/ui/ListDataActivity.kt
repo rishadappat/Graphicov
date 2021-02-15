@@ -1,12 +1,15 @@
 package com.appat.graphicov.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.TransitionManager
 import com.appat.graphicov.adapters.ListDataAdapter
 import com.appat.graphicov.databinding.ActivityListDataBinding
 import com.appat.graphicov.models.requests.GeneralDataRequest
@@ -20,6 +23,8 @@ import com.appat.graphicov.webservice.api.Api
 import com.appat.graphicov.webservice.service.Status
 import com.appat.graphicov.webservice.service.WebService
 import com.appat.graphicov.webservice.serviceinterface.CovidService
+import com.google.android.material.transition.MaterialArcMotion
+import com.google.android.material.transition.MaterialContainerTransform
 
 class ListDataActivity : AppCompatActivity() {
 
@@ -36,6 +41,8 @@ class ListDataActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityListDataBinding
 
+    private var isSortViewVisible = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityListDataBinding.inflate(layoutInflater)
@@ -49,6 +56,19 @@ class ListDataActivity : AppCompatActivity() {
             false
         )
         setViewModel()
+
+        binding.sortFab.setOnClickListener {
+            showSortView()
+        }
+        binding.sortOptionsSheet.setOnClickListener {
+            hideSortView()
+        }
+        binding.recyclerView.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                hideSortView()
+            }
+        })
     }
 
     private fun setViewModel()
@@ -116,5 +136,41 @@ class ListDataActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun showSortView()
+    {
+        val transform = MaterialContainerTransform().apply {
+            startView = binding.sortFab
+            endView = binding.sortOptionsSheet
+            addTarget(endView!!)
+            setPathMotion(MaterialArcMotion())
+            scrimColor = Color.TRANSPARENT
+        }
+
+        TransitionManager.beginDelayedTransition(binding.root, transform)
+        binding.sortFab.visibility = View.GONE
+        binding.sortOptionsSheet.visibility = View.VISIBLE
+        isSortViewVisible = true
+    }
+
+    private fun hideSortView()
+    {
+        if(!isSortViewVisible)
+        {
+            return
+        }
+        val transform = MaterialContainerTransform().apply {
+            startView = binding.sortOptionsSheet
+            endView = binding.sortFab
+            addTarget(endView!!)
+            setPathMotion(MaterialArcMotion())
+            scrimColor = Color.TRANSPARENT
+        }
+
+        TransitionManager.beginDelayedTransition(binding.root, transform)
+        binding.sortFab.visibility = View.VISIBLE
+        binding.sortOptionsSheet.visibility = View.GONE
+        isSortViewVisible = false
     }
 }
