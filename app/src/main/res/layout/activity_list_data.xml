@@ -37,15 +37,54 @@
 
     </RelativeLayout>
 
-    <com.google.android.material.circularreveal.CircularRevealLinearLayout
+    <com.google.android.material.circularreveal.cardview.CircularRevealCardView
         android:id="@+id/sortOptionsSheet"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="bottom|center_horizontal"
         android:visibility="invisible"
-        android:background="@color/colorPrimary"
-        app:layout_anchor="@id/sortFab">
-    </com.google.android.material.circularreveal.CircularRevealLinearLayout>
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:layout_anchor="@id/sortFab"
+        android:layout_margin="16dp"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="10dp"
+        app:rippleColor="@color/transparent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/closeButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                app:rippleColor="@color/transparent"
+                app:icon="@drawable/close"
+                app:iconPadding="0dp"
+                android:padding="0dp"
+                app:iconTint="@color/white"
+                app:iconSize="15dp"
+                app:iconGravity="textStart" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/closeButton"
+                android:layout_alignParentStart="true"
+                android:text="@string/sort_by"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_margin="5dp"/>
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/title">
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+        </RelativeLayout>
+    </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/sortFab"
@@ -55,6 +94,9 @@
         android:layout_margin="16dp"
         app:srcCompat="@drawable/sort"
         app:backgroundTint="@color/colorAccent"
+        app:showMotionSpec="@animator/design_fab_show_motion_spec"
+        app:hideMotionSpec="@animator/design_fab_hide_motion_spec"
+        android:transitionName="fab"
         android:fitsSystemWindows="true"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

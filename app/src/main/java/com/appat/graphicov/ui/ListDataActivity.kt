@@ -1,11 +1,18 @@
 package com.appat.graphicov.ui
 
+import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.os.Bundle
+import android.transition.Explode
+import android.transition.Slide
 import android.util.Log
+import android.view.Gravity
 import android.view.View
+import android.view.Window
+import android.view.animation.Animation
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.updatePadding
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +22,7 @@ import com.appat.graphicov.databinding.ActivityListDataBinding
 import com.appat.graphicov.models.requests.GeneralDataRequest
 import com.appat.graphicov.roomdb.entities.CountryDataEntity
 import com.appat.graphicov.utilities.doAsync
+import com.appat.graphicov.utilities.extensions.dp
 import com.appat.graphicov.utilities.uiThread
 import com.appat.graphicov.viewmodel.AllCountriesDataViewModel
 import com.appat.graphicov.viewmodel.GlobalDataViewModel
@@ -45,6 +53,9 @@ class ListDataActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
+        window.enterTransition = Slide(Gravity.END)
+        window.exitTransition = Slide(Gravity.START)
         binding = ActivityListDataBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -57,18 +68,22 @@ class ListDataActivity : AppCompatActivity() {
         )
         setViewModel()
 
+        binding.sortFab.drawable.alpha = 0
+        animateFabIcon()
+
         binding.sortFab.setOnClickListener {
             showSortView()
         }
-        binding.sortOptionsSheet.setOnClickListener {
-            hideSortView()
-        }
-        binding.recyclerView.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 hideSortView()
             }
         })
+
+        binding.closeButton.setOnClickListener {
+            hideSortView()
+        }
     }
 
     private fun setViewModel()
@@ -78,6 +93,17 @@ class ListDataActivity : AppCompatActivity() {
         globalDataViewModel = ViewModelProvider(this, factory).get(GlobalDataViewModel::class.java)
         getAllCountriesData()
         callGetGlobalDataService()
+    }
+
+    private fun animateFabIcon()
+    {
+        val animator = ObjectAnimator.ofInt(binding.sortFab.drawable, "alpha",0, 255)
+        animator.start()
+    }
+
+    override fun onBackPressed() {
+        binding.sortFab.drawable.alpha = 0
+        super.onBackPressed()
     }
 
     private fun getAllCountriesData() {
@@ -90,7 +116,7 @@ class ListDataActivity : AppCompatActivity() {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        resource.data?.observe(this, { allCountriesData->
+                        resource.data?.observe(this, { allCountriesData ->
                             doAsync {
                                 allCountryDataResponse.clear()
                                 allCountryDataResponse.addAll(allCountriesData)

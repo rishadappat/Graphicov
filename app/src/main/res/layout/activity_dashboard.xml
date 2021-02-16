@@ -560,10 +560,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        app:srcCompat="@drawable/list"
+        android:src="@drawable/list"
         app:backgroundTint="@color/colorAccent"
         app:showMotionSpec="@animator/design_fab_show_motion_spec"
         app:hideMotionSpec="@animator/design_fab_hide_motion_spec"
         android:fitsSystemWindows="true"
+        android:transitionName="fab"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

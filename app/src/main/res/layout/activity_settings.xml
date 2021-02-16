@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/windowBackground"
     android:fitsSystemWindows="true"
-    tools:context=".ui.SettingsActivity">
+    tools:context=".ui.SettingsActivity"
+    app:statusBarBackground="@color/windowBackground">
 
     <RelativeLayout
         android:layout_width="match_parent"

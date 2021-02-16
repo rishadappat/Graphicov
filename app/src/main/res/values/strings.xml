@@ -61,4 +61,6 @@
     <string name="analytics">Analytics</string>
     <string name="analytics_desc">Help us to make the application better</string>
     <string name="play_store_url">https://play.google.com/store/apps/details?id=%s</string>
+
+    <string name="sort_by">Sort By</string>
 </resources>

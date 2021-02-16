@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.util.Pair
 import androidx.core.view.ViewCompat
 import androidx.core.view.updatePadding
 import androidx.lifecycle.ViewModelProvider
@@ -25,6 +26,7 @@ import com.appat.graphicov.utilities.listeners.AppBarStateChangeListener
 import com.appat.graphicov.utilities.sharedpreferences.SharedPrefUtility
 import com.appat.graphicov.utilities.uiThread
 import com.appat.graphicov.utilities.viewcomponents.CustomMarkerView
+import com.appat.graphicov.utilities.viewcomponents.makeSceneTransitionAnimation
 import com.appat.graphicov.viewmodel.*
 import com.appat.graphicov.webservice.api.Api
 import com.appat.graphicov.webservice.service.Status
@@ -149,12 +151,6 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
         startActivity(intent)
     }
 
-//    private fun gotoCountrySelector()
-//    {
-//        val intent = Intent(this, CountrySelectionActivity::class.java)
-//        startActivity(intent)
-//    }
-
     private fun gotoSettings()
     {
         val intent = Intent(this, SettingsActivity::class.java)
@@ -164,7 +160,24 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun gotoCountryList()
     {
         val intent = Intent(this, ListDataActivity::class.java)
-        startActivity(intent)
+
+        val options = makeSceneTransitionAnimation(
+            this,
+            Pair(binding.countryListFab, "fab")
+        )
+        binding.countryListFab.drawable.alpha = 0
+        startActivity(intent, options.toBundle())
+    }
+
+    override fun onResume() {
+        super.onResume()
+        animateFabIcon()
+    }
+
+    private fun animateFabIcon()
+    {
+        val animator = ObjectAnimator.ofInt(binding.countryListFab.drawable, "alpha",0, 255)
+        animator.start()
     }
 
     private fun animateToggleButton(checkedId: Int, isChecked: Boolean)
