@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.CountrySelectionActivity"
     android:fitsSystemWindows="true"
-    android:background="@color/windowBackground"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical"
     app:statusBarBackground="@color/colorPrimaryDark">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="@string/choose_country"
-            android:fitsSystemWindows="false"
-            android:textAlignment="center"
-            app:layout_collapseMode="pin"
-            app:titleTextColor="@color/white"
-            android:background="@color/colorPrimaryDark"/>
-    </com.google.android.material.appbar.AppBarLayout>
+        android:layout_height="?attr/actionBarSize"
+        app:title="@string/choose_country"
+        android:fitsSystemWindows="false"
+        android:textAlignment="center"
+        app:layout_collapseMode="pin"
+        app:titleTextColor="@color/white"
+        android:background="@color/colorPrimaryDark"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -47,7 +43,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/searchView"
-            android:layout_above="@id/confirmButton"/>
+            android:layout_above="@id/confirmButton"
+            android:background="@color/windowBackground"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/confirmButton"
@@ -68,4 +65,4 @@
     </RelativeLayout>
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

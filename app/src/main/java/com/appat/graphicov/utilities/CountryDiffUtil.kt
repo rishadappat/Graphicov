@@ -3,6 +3,7 @@ package com.appat.graphicov.utilities
 import androidx.annotation.Nullable
 import androidx.recyclerview.widget.DiffUtil
 import com.appat.graphicov.roomdb.entities.CountryDataEntity
+import com.appat.graphicov.utilities.viewcomponents.Change
 
 class CountryDiffUtil (private val oldList: List<CountryDataEntity>, private val newList: List<CountryDataEntity>) : DiffUtil.Callback() {
 
@@ -20,6 +21,11 @@ class CountryDiffUtil (private val oldList: List<CountryDataEntity>, private val
 
     @Nullable
     override fun getChangePayload(oldPosition: Int, newPosition: Int): Any? {
-        return super.getChangePayload(oldPosition, newPosition)
+        val oldItem = oldList[oldPosition]
+        val newItem = newList[newPosition]
+
+        return Change(
+            oldItem,
+            newItem)
     }
 }

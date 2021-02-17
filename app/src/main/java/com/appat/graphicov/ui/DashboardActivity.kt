@@ -177,6 +177,7 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun animateFabIcon()
     {
         val animator = ObjectAnimator.ofInt(binding.countryListFab.drawable, "alpha",0, 255)
+        animator.duration = 100
         animator.start()
     }
 

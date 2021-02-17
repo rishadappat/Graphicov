@@ -24,23 +24,31 @@
             android:background="@color/colorPrimaryDark"/>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/headerLayout"
+            layout="@layout/global_data_header"/>
+
+        <include
+            android:id="@+id/globalDataItemHeader"
+            layout="@layout/global_data_item_header"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"/>
+            android:layout_height="match_parent"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <com.google.android.material.circularreveal.cardview.CircularRevealCardView
         android:id="@+id/sortOptionsSheet"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
         android:visibility="invisible"
         app:cardBackgroundColor="@color/colorPrimary"
@@ -51,8 +59,8 @@
         app:rippleColor="@color/transparent">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp">
+            android:layout_height="wrap_content"
+            android:padding="0dp">
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/closeButton"
                 android:layout_width="30dp"
@@ -64,6 +72,9 @@
                 android:padding="0dp"
                 app:iconTint="@color/white"
                 app:iconSize="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/transparent"
                 app:iconGravity="textStart" />
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/title"
@@ -75,14 +86,64 @@
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:layout_margin="5dp"/>
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"/>
 
-            <com.google.android.material.button.MaterialButtonToggleGroup
+            <RadioGroup
+                android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/title">
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:checkedButton="@+id/sortByEffected"
+                android:padding="10dp">
 
-            </com.google.android.material.button.MaterialButtonToggleGroup>
+                <RadioButton
+                    android:id="@+id/sortByCountry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/country"
+                    android:buttonTint="@color/colorAccent"
+                    android:textColor="@color/white"/>
+
+                <RadioButton
+                    android:id="@+id/sortByEffected"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/effected"
+                    android:buttonTint="@color/colorAccent"
+                    android:textColor="@color/white"/>
+
+                <RadioButton
+                    android:id="@+id/sortByDeath"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/death"
+                    android:buttonTint="@color/colorAccent"
+                    android:textColor="@color/white"/>
+
+                <RadioButton
+                    android:id="@+id/sortByRecovered"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recovered"
+                    android:buttonTint="@color/colorAccent"
+                    android:textColor="@color/white"/>
+
+            </RadioGroup>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/confirmButton"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:backgroundTint="@color/colorAccent"
+                android:text="@string/confirm"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                app:cornerRadius="0dp"
+                android:layout_below="@+id/radioGroup"
+                android:scaleType="centerInside"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:elevation="10dp"/>
         </RelativeLayout>
     </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
 

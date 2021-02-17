@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:weightSum="3"
-    android:paddingHorizontal="5dp">
+    android:paddingHorizontal="5dp"
+    android:id="@+id/headerLayout">
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/effectedCardView"
         android:layout_width="0dp"

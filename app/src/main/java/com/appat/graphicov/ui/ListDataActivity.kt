@@ -17,10 +17,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.TransitionManager
+import com.appat.graphicov.R
 import com.appat.graphicov.adapters.ListDataAdapter
 import com.appat.graphicov.databinding.ActivityListDataBinding
 import com.appat.graphicov.models.requests.GeneralDataRequest
 import com.appat.graphicov.roomdb.entities.CountryDataEntity
+import com.appat.graphicov.utilities.Utility
 import com.appat.graphicov.utilities.doAsync
 import com.appat.graphicov.utilities.extensions.dp
 import com.appat.graphicov.utilities.uiThread
@@ -84,6 +86,11 @@ class ListDataActivity : AppCompatActivity() {
         binding.closeButton.setOnClickListener {
             hideSortView()
         }
+
+        binding.confirmButton.setOnClickListener {
+            applySort()
+            hideSortView()
+        }
     }
 
     private fun setViewModel()
@@ -102,6 +109,11 @@ class ListDataActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        if(isSortViewVisible)
+        {
+            hideSortView()
+            return
+        }
         binding.sortFab.drawable.alpha = 0
         super.onBackPressed()
     }
@@ -149,7 +161,9 @@ class ListDataActivity : AppCompatActivity() {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         resource.data?.let { globalData ->
-                            adapter.setGlobalData(globalData)
+                            binding.headerLayout.effectedTextView.animateText(Utility.formatLong(globalData.cases))
+                            binding.headerLayout.recoveredTextView.animateText(Utility.formatLong(globalData.recovered))
+                            binding.headerLayout.deathTextView.animateText(Utility.formatLong(globalData.deaths))
                         }
                     }
                     Status.ERROR -> {
@@ -198,5 +212,39 @@ class ListDataActivity : AppCompatActivity() {
         binding.sortFab.visibility = View.VISIBLE
         binding.sortOptionsSheet.visibility = View.GONE
         isSortViewVisible = false
+    }
+
+    private fun applySort()
+    {
+        doAsync {
+            val sortedList: List<CountryDataEntity>?
+            when (binding.radioGroup.checkedRadioButtonId) {
+                R.id.sortByDeath -> {
+                    sortedList = allCountryDataResponse.sortedWith(compareByDescending {
+                        it.deaths
+                    })
+                }
+                R.id.sortByEffected -> {
+                    sortedList = allCountryDataResponse.sortedWith(compareByDescending {
+                        it.cases
+                    })
+                }
+                R.id.sortByRecovered -> {
+                    sortedList = allCountryDataResponse.sortedWith(compareByDescending {
+                        it.recovered
+                    })
+                }
+                else -> {
+                    sortedList = allCountryDataResponse.sortedWith(compareBy {
+                        it.countryName
+                    })
+                }
+            }
+            allCountryDataResponse.clear()
+            allCountryDataResponse.addAll(sortedList)
+            uiThread {
+                adapter.setData(allCountryDataResponse)
+            }
+        }
     }
 }
