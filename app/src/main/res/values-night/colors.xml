@@ -36,4 +36,5 @@
     <color name="serious">#9059ff</color>
     <color name="serious_tr_30">#4D9059ff</color>
     <color name="seriousDark">#256831D8</color>
+    <color name="bubble_color">#087ED3</color>
 </resources>
