@@ -14,12 +14,12 @@ class WebService {
             .build()
     }
 
-    private fun getService(serviceClass: Class<Any>): Any {
+    private fun getService(serviceClass: Class<CovidService>): CovidService {
         return initRetrofit().create(serviceClass)
     }
 
     fun getCovidService(serviceClass: Class<CovidService>): CovidService
     {
-        return getService(serviceClass as Class<Any>) as CovidService
+        return getService(serviceClass)
     }
 }

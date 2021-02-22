@@ -316,6 +316,7 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
                                     getRecoveredHistory()
                                     val country = selectedCountry?.countryName
                                     binding.myCountry.text = country
+                                    binding.myCountry.isSelected = true
 //                                    Utility.getDrawableFromUrl(this, selectCountry.flag.toString()
 //                                    ) { drawable ->
 //                                        binding.myCountry.icon = drawable

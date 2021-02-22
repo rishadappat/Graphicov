@@ -172,8 +172,12 @@
                         app:elevation="0dp"
                         app:iconSize="20dp"
                         app:iconTint="@null"
-                        android:singleLine="true"
                         android:ellipsize="marquee"
+                        android:fadingEdge="horizontal"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:textAlignment="center"
                         app:rippleColor="@color/transparent" />
 
                     <com.google.android.material.button.MaterialButton
