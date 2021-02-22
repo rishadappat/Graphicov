@@ -14,6 +14,6 @@ Dashboard             |  Global Data        |  Map
 [![Play Store Link](google-play-badge.png)](https://play.google.com/store/apps/details?id=com.appat.graphicov)
 
 
-![Mad Score](MadScore/kotlin.png)
-![Mad Score](MadScore/jetpack.png)
-![Mad Score](MadScore/summary.png)
+[![Mad Score](MadScore/kotlin.png)](https://madscorecard.withgoogle.com/scorecards/2942804448/)
+[![Mad Score](MadScore/jetpack.png)](https://madscorecard.withgoogle.com/scorecards/2942804448/)
+[![Mad Score](MadScore/summary.png)](https://madscorecard.withgoogle.com/scorecards/2942804448/)
