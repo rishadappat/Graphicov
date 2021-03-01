@@ -6,7 +6,7 @@ This application will provide daily and total covid 19 statistics globaly and fo
 
 Dashboard             |  Global Data        |  Map
 :-------------------------:|:-------------------------:|:-------------------------:
-![](dashboard.jpg)  |  ![](global_data.jpg)           | ![](map.jpg)
+<img src="dashboard.jpg" width="90%"></img>   |  <img src="global_data.jpg" width="90%"></img>  | <img src="map.jpg" width="90%"></img>
 
 <br/><br/>
 ### Play Store
