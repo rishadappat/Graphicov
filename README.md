@@ -8,7 +8,7 @@ Dashboard             |  Global Data        |  Map
 :-------------------------:|:-------------------------:|:-------------------------:
 ![](dashboard.jpg)  |  ![](global_data.jpg)           | ![](map.jpg)
 
-
+<br/><br/>
 ### Play Store
 <a href="https://play.google.com/store/apps/details?id=com.appat.graphicov">
 <img src="google-play-badge.png" width="350" height="150" >
