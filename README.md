@@ -9,10 +9,11 @@ Dashboard             |  Global Data        |  Map
 ![](dashboard.jpg)  |  ![](global_data.jpg)           | ![](map.jpg)
 
 
-
-
-[![Play Store Link](google-play-badge.png)](https://play.google.com/store/apps/details?id=com.appat.graphicov)<br/><br/>
-
+### Play Store
+<a href="https://play.google.com/store/apps/details?id=com.appat.graphicov">
+<img src="google-play-badge.png" width="350" height="150" >
+</a>
+<br/><br/>
 
 ### Data Source
 <a href="https://disease.sh/docs/">
