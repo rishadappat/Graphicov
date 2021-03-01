@@ -10,13 +10,13 @@ Dashboard             |  Global Data        |  Map
 
 <br/><br/>
 ### Play Store
-<a href="https://play.google.com/store/apps/details?id=com.appat.graphicov">
+<a href="https://play.google.com/store/apps/details?id=com.appat.graphicov" target="_blank">
 <img src="google-play-badge.png" width="300" height="100" >
 </a>
 <br/><br/>
 
 ### Data Source
-<a href="https://disease.sh/docs/">
+<a href="https://disease.sh/docs/" target="_blank">
 <img src="https://raw.githubusercontent.com/disease-sh/API/master/public/assets/img/logo.png" width="350" height="100" >
 </a>
 <br/><br/>
