@@ -22,6 +22,8 @@ Dashboard             |  Global Data        |  Map
 <br/><br/>
 
 ### MAD Scorecard  
-[![Mad Score](MadScore/summary.png)](https://madscorecard.withgoogle.com/scorecards/2942804448/)
-[![Mad Score](MadScore/kotlin.png)](https://madscorecard.withgoogle.com/scorecards/2942804448/)
-[![Mad Score](MadScore/jetpack.png)](https://madscorecard.withgoogle.com/scorecards/2942804448/)
+<a href="https://madscorecard.withgoogle.com/scorecards/2942804448/" target="_blank">
+<img src="MadScore/summary.png" width="45%"></img> 
+<img src="MadScore/kotlin.png" width="45%"></img>
+<img src="MadScore/jetpack.png" width="45%"></img>
+</a>
