@@ -11,7 +11,7 @@ Dashboard             |  Global Data        |  Map
 <br/><br/>
 ### Play Store
 <a href="https://play.google.com/store/apps/details?id=com.appat.graphicov">
-<img src="google-play-badge.png" width="350" height="150" >
+<img src="google-play-badge.png" width="300" height="100" >
 </a>
 <br/><br/>
 
