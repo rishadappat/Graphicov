@@ -15,7 +15,10 @@ Dashboard             |  Global Data        |  Map
 
 
 ### Data Source
-[![disease.sh](https://raw.githubusercontent.com/disease-sh/API/master/public/assets/img/logo.png)](https://disease.sh/docs/)<br/><br/>
+<a href="https://disease.sh/docs/">
+<img src="https://raw.githubusercontent.com/disease-sh/API/master/public/assets/img/logo.png" width="350" height="100" >
+</a>
+<br/><br/>
 
 ### MAD Scorecard  
 [![Mad Score](MadScore/summary.png)](https://madscorecard.withgoogle.com/scorecards/2942804448/)
