@@ -16,7 +16,7 @@ class CountryDiffUtil (private val oldList: List<CountryDataEntity>, private val
     }
 
     override fun areContentsTheSame(oldPosition: Int, newPosition: Int): Boolean {
-        return oldList[oldPosition].countryName == newList[newPosition].countryName
+        return oldList[oldPosition].countryId == newList[newPosition].countryId
     }
 
     @Nullable

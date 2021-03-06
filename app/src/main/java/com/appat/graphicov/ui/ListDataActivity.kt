@@ -26,6 +26,7 @@ import com.appat.graphicov.utilities.Utility
 import com.appat.graphicov.utilities.doAsync
 import com.appat.graphicov.utilities.extensions.dp
 import com.appat.graphicov.utilities.uiThread
+import com.appat.graphicov.utilities.viewcomponents.LinearLayoutManagerWrapper
 import com.appat.graphicov.viewmodel.AllCountriesDataViewModel
 import com.appat.graphicov.viewmodel.GlobalDataViewModel
 import com.appat.graphicov.viewmodel.ViewModelFactory
@@ -63,7 +64,7 @@ class ListDataActivity : AppCompatActivity() {
         setContentView(view)
 
         adapter = ListDataAdapter(this)
-        binding.recyclerView.layoutManager = LinearLayoutManager(
+        binding.recyclerView.layoutManager = LinearLayoutManagerWrapper(
             this@ListDataActivity,
             RecyclerView.VERTICAL,
             false
