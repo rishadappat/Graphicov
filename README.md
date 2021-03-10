@@ -17,7 +17,7 @@ Dashboard             |  Global Data        |  Map
 
 ### Data Source
 <a href="https://disease.sh/docs/" target="_blank">
-<img src="https://raw.githubusercontent.com/disease-sh/API/master/public/assets/img/logo.png" width="350" height="100" >
+<img src="diseases_logo.png" style="background-color:red;" width="350" height="100" >
 </a>
 <br/><br/>
 
