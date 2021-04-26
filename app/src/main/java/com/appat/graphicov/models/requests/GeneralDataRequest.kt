@@ -3,7 +3,7 @@ package com.appat.graphicov.models.requests
 import com.google.gson.Gson
 
 data class GeneralDataRequest(
-    val sort: String,
+    val page: String,
     val twoDaysAgo: Boolean,
     val yesterday: Boolean
 )

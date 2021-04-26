@@ -12,9 +12,9 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import java.io.IOException
 
-class DataStoreUtility(private val context: Context) {
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "app_preferences")
 
-    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "app_preferences")
+class DataStoreUtility(private val context: Context) {
 
     val selectedCountryData: Flow<String> = context.dataStore.data
         .catch {
