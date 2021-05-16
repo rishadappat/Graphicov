@@ -2,6 +2,7 @@ package com.appat.graphicov.utilities.listeners
 
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
+import kotlin.math.abs
 
 
 abstract class AppBarStateChangeListener : OnOffsetChangedListener {
@@ -18,7 +19,7 @@ abstract class AppBarStateChangeListener : OnOffsetChangedListener {
                 }
                 State.EXPANDED
             }
-            Math.abs(i) >= appBarLayout.totalScrollRange -> {
+            abs(i) >= appBarLayout.totalScrollRange -> {
                 if (mCurrentState != State.COLLAPSED) {
                     onStateChanged(appBarLayout, State.COLLAPSED)
                 }

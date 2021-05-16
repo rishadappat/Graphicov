@@ -2,6 +2,7 @@ package com.appat.graphicov.models.requests
 
 import com.google.gson.Gson
 
+@Suppress("UNCHECKED_CAST")
 data class GeneralDataRequest(
     val page: String,
     val twoDaysAgo: Boolean,
