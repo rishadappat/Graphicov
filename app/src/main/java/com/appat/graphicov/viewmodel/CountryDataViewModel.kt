@@ -12,12 +12,13 @@ class CountryDataViewModel(private val webServiceRepository: WebServiceRepositor
     fun getCountryData(params: GeneralDataRequest, country: String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
-            if(webServiceRepository.getCountryData(params, country) == null)
+            val response = webServiceRepository.getCountryData(params, country)
+            if(response == null)
             {
                 emit(Resource.error(data = null, message = "Error Occurred!"))
             }
             else {
-                emit(Resource.success(data = webServiceRepository.getCountryData(params, country)))
+                emit(Resource.success(data = response))
             }
         } catch (exception: Exception) {
             Log.e("getCountryData", exception.message.toString())

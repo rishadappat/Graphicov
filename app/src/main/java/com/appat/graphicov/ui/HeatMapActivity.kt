@@ -72,7 +72,7 @@ class HeatMapActivity : AppCompatActivity(), OnMapReadyCallback {
             if (!success) {
                 Log.e(TAG, "Style parsing failed.")
             }
-            getAllCountriesData(false)
+            getAllCountriesData()
             this.googleMap?.setOnCircleClickListener {
                 Log.d("CircleClicked", it.tag.toString())
             }
@@ -86,7 +86,7 @@ class HeatMapActivity : AppCompatActivity(), OnMapReadyCallback {
         allCountriesDataViewModel = ViewModelProvider(this, factory).get(AllCountriesDataViewModel::class.java)
     }
 
-    private fun getAllCountriesData(yesterday: Boolean) {
+    private fun getAllCountriesData() {
         allCountriesDataViewModel.getAllCountriesData().observe(this, {
             it?.let { resource ->
                 when (resource.status) {

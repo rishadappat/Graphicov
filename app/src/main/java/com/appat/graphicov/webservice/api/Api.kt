@@ -14,4 +14,8 @@ class Api(private val covidService: CovidService) {
     suspend fun getCountryHistory(country: String, lastdays: String) = covidService.getCountryHistory(country, lastdays)
 
     suspend fun getGlobalHistory(lastdays: String) = covidService.getGlobalHistory(lastdays)
+
+    suspend fun getGovntCountries() = covidService.getGovntCountries()
+
+    suspend fun getGovntCountryData(country: String) = covidService.getGovntCountryData(country)
 }

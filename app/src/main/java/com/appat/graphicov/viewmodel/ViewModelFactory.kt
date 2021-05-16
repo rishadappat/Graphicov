@@ -6,6 +6,7 @@ import com.appat.graphicov.repository.AllCountriesDataRepository
 import com.appat.graphicov.repository.WebServiceRepository
 import com.appat.graphicov.webservice.api.Api
 
+@Suppress("UNCHECKED_CAST")
 class ViewModelFactory(private val api: Api) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -24,6 +25,9 @@ class ViewModelFactory(private val api: Api) : ViewModelProvider.Factory {
             }
             modelClass.isAssignableFrom(GlobalHistoryViewModel::class.java) -> {
                 GlobalHistoryViewModel() as T
+            }
+            modelClass.isAssignableFrom(GovntDataViewModel::class.java) -> {
+                GovntDataViewModel(WebServiceRepository(api)) as T
             }
             else -> throw IllegalArgumentException("Unknown class name")
         }

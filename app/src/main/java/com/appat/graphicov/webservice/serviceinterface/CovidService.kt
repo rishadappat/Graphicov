@@ -22,4 +22,10 @@ interface CovidService {
 
     @GET("historical/all")
     suspend fun getGlobalHistory(@Query("lastdays") lastdays: String): GetGlobalHistoryResponse
+
+    @GET("gov")
+    suspend fun getGovntCountries(): Array<String>
+
+    @GET("gov/{country}")
+    suspend fun getGovntCountryData(@Path("country") country: String): GovntCountryDataResponse
 }

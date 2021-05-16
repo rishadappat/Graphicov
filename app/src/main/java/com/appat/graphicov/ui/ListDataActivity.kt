@@ -3,18 +3,14 @@ package com.appat.graphicov.ui
 import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.os.Bundle
-import android.transition.Explode
 import android.transition.Slide
 import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.Window
-import android.view.animation.Animation
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.updatePadding
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.TransitionManager
 import com.appat.graphicov.R
@@ -24,7 +20,6 @@ import com.appat.graphicov.models.requests.GeneralDataRequest
 import com.appat.graphicov.roomdb.entities.CountryDataEntity
 import com.appat.graphicov.utilities.Utility
 import com.appat.graphicov.utilities.doAsync
-import com.appat.graphicov.utilities.extensions.dp
 import com.appat.graphicov.utilities.uiThread
 import com.appat.graphicov.utilities.viewcomponents.LinearLayoutManagerWrapper
 import com.appat.graphicov.viewmodel.AllCountriesDataViewModel

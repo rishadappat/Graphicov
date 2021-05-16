@@ -57,6 +57,7 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var countryDataViewModel: CountryDataViewModel
     private lateinit var countryHistoryViewModel: CountryHistoryViewModel
     private lateinit var globalHistoryViewModel: GlobalHistoryViewModel
+    private lateinit var govntDataViewModel: GovntDataViewModel
 
     private var currentState = AppBarStateChangeListener.State.EXPANDED
     private var googleMap: GoogleMap? = null
@@ -293,6 +294,7 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
         countryDataViewModel = ViewModelProvider(this, factory).get(CountryDataViewModel::class.java)
         countryHistoryViewModel = ViewModelProvider(this, factory).get(CountryHistoryViewModel::class.java)
         globalHistoryViewModel = ViewModelProvider(this, factory).get(GlobalHistoryViewModel::class.java)
+        govntDataViewModel = ViewModelProvider(this, factory).get(GovntDataViewModel::class.java)
         SharedPrefUtility.getSelectedCountry().observe(this, {
             allCountriesDataViewModel.getCountryDataByISO(it ?: "").observe(this, { resource ->
                 resource.let { resourceData ->
@@ -340,6 +342,7 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
         })
     }
 
+    @Suppress("SameParameterValue")
     private fun getAllCountriesData(yesterday: Boolean) {
         val request = GeneralDataRequest("active", twoDaysAgo = false, yesterday = yesterday)
         allCountriesDataViewModel.getAllCountriesDataWeb(request, api).observe(this, { resource ->

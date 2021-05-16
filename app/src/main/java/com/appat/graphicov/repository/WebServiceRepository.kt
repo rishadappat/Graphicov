@@ -4,6 +4,7 @@ import android.util.Log
 import com.appat.graphicov.models.requests.GeneralDataRequest
 import com.appat.graphicov.models.responses.CountryDataResponse
 import com.appat.graphicov.models.responses.GlobalDataResponse
+import com.appat.graphicov.models.responses.GovntCountryDataResponse
 import com.appat.graphicov.roomdb.entities.CountryDataEntity
 import com.appat.graphicov.roomdb.entities.CountryHistoryEntity
 import com.appat.graphicov.roomdb.entities.GlobalHistoryEntity
@@ -56,6 +57,26 @@ class WebServiceRepository(private val api: Api) {
         }catch (e: Exception)
         {
             Log.e("getGlobalData", e.toString())
+            null
+        }
+    }
+
+    suspend fun getGovntCountries(): Array<String>? {
+        return try {
+            api.getGovntCountries()
+        }catch (e: Exception)
+        {
+            Log.e("getGovntCountries", e.toString())
+            null
+        }
+    }
+
+    suspend fun getGovntCountryData(country: String): GovntCountryDataResponse? {
+        return try {
+            api.getGovntCountryData(country)
+        }catch (e: Exception)
+        {
+            Log.e("getGovntCountries", e.toString())
             null
         }
     }

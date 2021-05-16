@@ -12,12 +12,13 @@ class GlobalDataViewModel(private val webServiceRepository: WebServiceRepository
     fun getGlobalData(params: GeneralDataRequest) = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
-            if(webServiceRepository.getGlobalData(params) == null)
+            val response = webServiceRepository.getGlobalData(params)
+            if(response == null)
             {
                 emit(Resource.error(data = null, message = "Error Occurred!"))
             }
             else {
-                emit(Resource.success(data = webServiceRepository.getGlobalData(params)))
+                emit(Resource.success(data = response))
             }
         } catch (exception: Exception) {
             Log.e("getGlobalData", exception.message.toString())

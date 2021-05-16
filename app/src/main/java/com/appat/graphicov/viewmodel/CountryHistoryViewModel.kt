@@ -9,7 +9,7 @@ import com.appat.graphicov.roomdb.entities.CountryHistoryEntity
 import com.appat.graphicov.webservice.api.Api
 import kotlinx.coroutines.launch
 
-class CountryHistoryViewModel(): ViewModel() {
+class CountryHistoryViewModel: ViewModel() {
     fun getCountryHistoryFromWeb(country: String, lastdays: String, api: Api){
         viewModelScope.launch {
             WebServiceRepository(api).getCountryHistory(country, lastdays)
