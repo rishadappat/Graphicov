@@ -4,8 +4,8 @@
 This application will provide daily and total covid 19 statistics globaly and for each countries.
 
 
-Dashboard             |  Global Data        |  Map Data
-:--------------------:|:-------------------:|:-------------------:
+Dashboard          |  Global Data        |  Map Data
+:-----------------:|:-------------------:|:-------------------:
 <img src="dashboard.jpg" width="90%"></img>|<img src="global_data.jpg" width="100%"></img>|<img src="map.jpg" width="100%"></img>
 
 <br/><br/>
