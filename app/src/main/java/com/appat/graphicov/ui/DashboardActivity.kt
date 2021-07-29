@@ -3,28 +3,28 @@ package com.appat.graphicov.ui
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.content.res.Resources
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.util.Pair
 import androidx.core.view.ViewCompat
 import androidx.core.view.updatePadding
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.appat.graphicov.R
 import com.appat.graphicov.databinding.ActivityDashboardBinding
 import com.appat.graphicov.models.requests.GeneralDataRequest
 import com.appat.graphicov.models.responses.CountryDataResponse
 import com.appat.graphicov.models.responses.GlobalDataResponse
 import com.appat.graphicov.roomdb.entities.CountryDataEntity
-import com.appat.graphicov.utilities.Utility
-import com.appat.graphicov.utilities.XAxisValueFormatter
-import com.appat.graphicov.utilities.doAsync
+import com.appat.graphicov.utilities.*
+import com.appat.graphicov.utilities.base.GraphicovActivity
 import com.appat.graphicov.utilities.listeners.AppBarStateChangeListener
 import com.appat.graphicov.utilities.sharedpreferences.SharedPrefUtility
-import com.appat.graphicov.utilities.uiThread
 import com.appat.graphicov.utilities.viewcomponents.CustomMarkerView
 import com.appat.graphicov.utilities.viewcomponents.makeSceneTransitionAnimation
 import com.appat.graphicov.viewmodel.*
@@ -48,7 +48,8 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayout
 
 
-class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
+class DashboardActivity : GraphicovActivity<ActivityDashboardBinding>(
+    ActivityDashboardBinding::inflate), OnMapReadyCallback {
 
     private val TAG = "DashboardActivity"
 
@@ -75,36 +76,38 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private var selectedCountry: CountryDataEntity? = null
 
-    private lateinit var binding: ActivityDashboardBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDashboardBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-        setSupportActionBar(binding.toolBar)
-        initMap()
-        initTabLayout()
-        applyPadding()
-        setupToggleButton()
-        listenAppBarLayoutChange()
-        binding.fullScreen.setOnClickListener {
-            gotoHeatMapActivity()
-        }
-        binding.settings.setOnClickListener {
-            gotoSettings()
-        }
-        binding.countryListFab.setOnClickListener {
-            gotoCountryList()
-        }
-        setupViewModel()
-        initializeHistoryChart()
+        lifecycleScope.launchWhenCreated {
+            monet.awaitMonetReady()
+            setSupportActionBar(binding.toolBar)
+            binding.collapsingToolbar.contentScrim = ColorDrawable(MonetColors.getBackgroundColorSecondary(this@DashboardActivity, monet))
+            binding.collapsingToolbar.background = ColorDrawable(MonetColors.getBackgroundColorSecondary(this@DashboardActivity, monet))
+            binding.collapsingToolbar.statusBarScrim = ColorDrawable(MonetColors.getBackgroundColorSecondary(this@DashboardActivity, monet))
+            binding.selectorBg.background = Utility.createGradientDrawable(Color.TRANSPARENT, MonetColors.getBackgroundColor(this@DashboardActivity, monet))
+            initMap()
+            initTabLayout()
+            applyPadding()
+            setupToggleButton()
+            listenAppBarLayoutChange()
+            binding.fullScreen.setOnClickListener {
+                gotoHeatMapActivity()
+            }
+            binding.settings.setOnClickListener {
+                gotoSettings()
+            }
+            binding.countryListFab.setOnClickListener {
+                gotoCountryList()
+            }
+            setupViewModel()
+            initializeHistoryChart()
 
 //        DataStoreUtility(this).selectedCountryData.asLiveData().observe(this, {
 //            Log.d("****************", "****************")
 //            Log.d("CountryChanged", it)
 //            Log.d("****************", "****************")
 //        })
+        }
     }
 
     private fun initTabLayout()
@@ -746,7 +749,7 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
                 .strokeColor(Utility.getColor(R.color.active))
                 .strokeWidth(2f)
                 .fillColor(Utility.getColor(R.color.activeDark))
-            googleMap!!.addCircle(circleOptions)
+            googleMap?.addCircle(circleOptions)
         } catch (e: Exception)
         {
             Log.d("Error", e.localizedMessage?.toString() ?: "")
@@ -766,6 +769,9 @@ class DashboardActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun initializeHistoryChart()
     {
+        binding.casesChartCardView.setCardBackgroundColor(MonetColors.getPrimaryColor(this, monet))
+        binding.deathChartCardView.setCardBackgroundColor(MonetColors.getPrimaryColor(this, monet))
+        binding.recoveredChartCardView.setCardBackgroundColor(MonetColors.getPrimaryColor(this, monet))
         setChartProperties(binding.casesHistoryChart)
         setChartProperties(binding.deathHistoryChart)
         setChartProperties(binding.recoveredHistoryChart)

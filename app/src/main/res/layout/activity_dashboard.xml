@@ -18,6 +18,7 @@
         android:fitsSystemWindows="true"
         app:elevation="0dp">
         <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
@@ -55,7 +56,6 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/gr_title_bg"
                     android:layout_alignParentBottom="true"/>
 
                 <com.google.android.material.button.MaterialButton
@@ -270,14 +270,14 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/white"
+                                android:textColor="@color/primaryTextColor"
                                 android:textSize="12sp"
                                 android:text="@string/effected"/>
                             <com.hanks.htextview.evaporate.EvaporateTextView
                                 android:id="@+id/effectedTextView"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/white"
+                                android:textColor="@color/primaryTextColor"
                                 android:textSize="18sp"
                                 android:layout_alignParentBottom="true"
                                 android:textStyle="bold"
@@ -307,14 +307,14 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/white"
+                                android:textColor="@color/primaryTextColor"
                                 android:textSize="12sp"
                                 android:text="@string/death"/>
                             <com.hanks.htextview.evaporate.EvaporateTextView
                                 android:id="@+id/deathTextView"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/white"
+                                android:textColor="@color/primaryTextColor"
                                 android:textSize="18sp"
                                 android:layout_alignParentBottom="true"
                                 android:textStyle="bold"
@@ -354,7 +354,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/white"
+                                android:textColor="@color/primaryTextColor"
                                 android:textSize="12sp"
                                 android:text="@string/recovered"/>
 
@@ -364,7 +364,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
                                 android:text="0"
-                                android:textColor="@color/white"
+                                android:textColor="@color/primaryTextColor"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
                         </RelativeLayout>
@@ -392,14 +392,14 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/white"
+                                android:textColor="@color/primaryTextColor"
                                 android:textSize="12sp"
                                 android:text="@string/active"/>
                             <com.hanks.htextview.evaporate.EvaporateTextView
                                 android:id="@+id/activeTextView"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/white"
+                                android:textColor="@color/primaryTextColor"
                                 android:textSize="14sp"
                                 android:layout_alignParentBottom="true"
                                 android:textStyle="bold"
@@ -429,14 +429,14 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/white"
+                                android:textColor="@color/primaryTextColor"
                                 android:textSize="12sp"
                                 android:text="@string/serious"/>
                             <com.hanks.htextview.evaporate.EvaporateTextView
                                 android:id="@+id/seriousTextView"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/white"
+                                android:textColor="@color/primaryTextColor"
                                 android:textSize="14sp"
                                 android:layout_alignParentBottom="true"
                                 android:textStyle="bold"
@@ -454,6 +454,7 @@
                     android:textColor="@color/toolBarTextColor" />
             </LinearLayout>
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/casesChartCardView"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_marginHorizontal="20dp"
@@ -488,6 +489,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/deathChartCardView"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_marginHorizontal="20dp"
@@ -522,6 +524,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/recoveredChartCardView"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_marginHorizontal="20dp"

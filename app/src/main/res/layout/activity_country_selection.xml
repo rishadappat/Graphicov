@@ -32,7 +32,7 @@
             android:paddingVertical="10dp"
             android:paddingHorizontal="20dp"
             android:textColorHint="@color/white_tr_50"
-            android:textColor="@color/white"
+            android:textColor="@color/primaryTextColor"
             android:hint="@string/search"
             android:drawablePadding="15dp"
             android:drawableStart="@drawable/search"

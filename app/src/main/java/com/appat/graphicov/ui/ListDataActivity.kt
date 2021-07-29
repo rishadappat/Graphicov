@@ -9,8 +9,8 @@ import android.view.Gravity
 import android.view.View
 import android.view.Window
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.TransitionManager
 import com.appat.graphicov.R
@@ -31,8 +31,9 @@ import com.appat.graphicov.webservice.service.WebService
 import com.appat.graphicov.webservice.serviceinterface.CovidService
 import com.google.android.material.transition.MaterialArcMotion
 import com.google.android.material.transition.MaterialContainerTransform
+import com.kieronquinn.monetcompat.app.MonetCompatActivity
 
-class ListDataActivity : AppCompatActivity() {
+class ListDataActivity : MonetCompatActivity() {
 
     private val TAG = "ListDataActivity"
 
@@ -54,38 +55,41 @@ class ListDataActivity : AppCompatActivity() {
         window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
         window.enterTransition = Slide(Gravity.END)
         window.exitTransition = Slide(Gravity.START)
-        binding = ActivityListDataBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        lifecycleScope.launchWhenCreated {
+            monet.awaitMonetReady()
+            binding = ActivityListDataBinding.inflate(layoutInflater)
+            val view = binding.root
+            setContentView(view)
 
-        adapter = ListDataAdapter(this)
-        binding.recyclerView.layoutManager = LinearLayoutManagerWrapper(
-            this@ListDataActivity,
-            RecyclerView.VERTICAL,
-            false
-        )
-        setViewModel()
+            adapter = ListDataAdapter(this@ListDataActivity)
+            binding.recyclerView.layoutManager = LinearLayoutManagerWrapper(
+                this@ListDataActivity,
+                RecyclerView.VERTICAL,
+                false
+            )
+            setViewModel()
 
-        binding.sortFab.drawable.alpha = 0
-        animateFabIcon()
+            binding.sortFab.drawable.alpha = 0
+            animateFabIcon()
 
-        binding.sortFab.setOnClickListener {
-            showSortView()
-        }
-        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
+            binding.sortFab.setOnClickListener {
+                showSortView()
+            }
+            binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    hideSortView()
+                }
+            })
+
+            binding.closeButton.setOnClickListener {
                 hideSortView()
             }
-        })
 
-        binding.closeButton.setOnClickListener {
-            hideSortView()
-        }
-
-        binding.confirmButton.setOnClickListener {
-            applySort()
-            hideSortView()
+            binding.confirmButton.setOnClickListener {
+                applySort()
+                hideSortView()
+            }
         }
     }
 

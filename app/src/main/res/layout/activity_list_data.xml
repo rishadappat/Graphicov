@@ -83,7 +83,7 @@
                 android:layout_toStartOf="@id/closeButton"
                 android:layout_alignParentStart="true"
                 android:text="@string/sort_by"
-                android:textColor="@color/white"
+                android:textColor="@color/primaryTextColor"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:layout_marginTop="15dp"
@@ -103,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/country"
                     android:buttonTint="@color/colorAccent"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/primaryTextColor"/>
 
                 <RadioButton
                     android:id="@+id/sortByEffected"
@@ -111,7 +111,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/effected"
                     android:buttonTint="@color/colorAccent"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/primaryTextColor"/>
 
                 <RadioButton
                     android:id="@+id/sortByDeath"
@@ -119,7 +119,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/death"
                     android:buttonTint="@color/colorAccent"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/primaryTextColor"/>
 
                 <RadioButton
                     android:id="@+id/sortByRecovered"
@@ -127,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/recovered"
                     android:buttonTint="@color/colorAccent"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/primaryTextColor"/>
 
             </RadioGroup>
             <com.google.android.material.button.MaterialButton

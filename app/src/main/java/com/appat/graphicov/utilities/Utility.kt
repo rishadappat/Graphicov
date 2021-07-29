@@ -2,7 +2,9 @@ package com.appat.graphicov.utilities
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.telephony.TelephonyManager
 import android.util.Log
@@ -174,5 +176,18 @@ object Utility {
     private fun getPlayStoreUrl(context: AppCompatActivity): String
     {
         return  String.format(getString(R.string.play_store_url), context.packageName)
+    }
+
+    fun createGradientDrawable(topColor: Int, bottomColor: Int): GradientDrawable
+    {
+        return GradientDrawable().apply {
+            colors = intArrayOf(
+                topColor,
+                bottomColor
+            )
+            gradientType = GradientDrawable.LINEAR_GRADIENT
+            shape = GradientDrawable.RECTANGLE
+            orientation = GradientDrawable.Orientation.TOP_BOTTOM
+        }
     }
 }

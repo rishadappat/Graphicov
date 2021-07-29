@@ -3,17 +3,13 @@ package com.appat.graphicov.ui
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.appat.graphicov.R
 import com.appat.graphicov.adapters.CountryPickerAdapter
 import com.appat.graphicov.databinding.ActivityCountrySelectionBinding
 import com.appat.graphicov.roomdb.entities.CountryDataEntity
-import com.appat.graphicov.utilities.Utility
 import com.appat.graphicov.utilities.doAsync
 import com.appat.graphicov.utilities.extensions.afterTextChanged
 import com.appat.graphicov.utilities.sharedpreferences.DataStoreUtility
@@ -25,12 +21,13 @@ import com.appat.graphicov.webservice.api.Api
 import com.appat.graphicov.webservice.service.Status
 import com.appat.graphicov.webservice.service.WebService
 import com.appat.graphicov.webservice.serviceinterface.CovidService
+import com.kieronquinn.monetcompat.app.MonetCompatActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-class CountrySelectionActivity : AppCompatActivity() {
+class CountrySelectionActivity : MonetCompatActivity() {
 
     private val TAG = "CountrySelectionActivity"
 
@@ -43,42 +40,45 @@ class CountrySelectionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCountrySelectionBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-        adapter = CountryPickerAdapter(this@CountrySelectionActivity)
-        binding.recyclerView.adapter = adapter
-        binding.recyclerView.layoutManager = LinearLayoutManager(
-            this@CountrySelectionActivity,
-            RecyclerView.VERTICAL,
-            false
-        )
-        setViewModel()
+        lifecycleScope.launchWhenCreated {
+            monet.awaitMonetReady()
+            binding = ActivityCountrySelectionBinding.inflate(layoutInflater)
+            val view = binding.root
+            setContentView(view)
+            adapter = CountryPickerAdapter(this@CountrySelectionActivity)
+            binding.recyclerView.adapter = adapter
+            binding.recyclerView.layoutManager = LinearLayoutManager(
+                this@CountrySelectionActivity,
+                RecyclerView.VERTICAL,
+                false
+            )
+            setViewModel()
 
-        binding.confirmButton.setOnClickListener {
-            val selectedCountry = adapter.selectedCountryCode
-            if(selectedCountry.isNotEmpty())
-            {
-                lifecycleScope.launch {
-                    withContext(Dispatchers.Main) {
-                        DataStoreUtility(this@CountrySelectionActivity).saveSelectedCountry(selectedCountry)
-                        SharedPrefUtility.saveSelectedCountry(selectedCountry)
-                        finish()
+            binding.confirmButton.setOnClickListener {
+                val selectedCountry = adapter.selectedCountryCode
+                if(selectedCountry.isNotEmpty())
+                {
+                    lifecycleScope.launch {
+                        withContext(Dispatchers.Main) {
+                            DataStoreUtility(this@CountrySelectionActivity).saveSelectedCountry(selectedCountry)
+                            SharedPrefUtility.saveSelectedCountry(selectedCountry)
+                            finish()
+                        }
                     }
                 }
             }
-        }
 
-        binding.searchView.afterTextChanged { searchString->
-            if(searchString == "")
-            {
-                adapter.setData(allCountryDataResponse)
-            }
-            else {
-                val filteredData = allCountryDataResponse.filter {
-                    it.countryName!!.contains(searchString, ignoreCase = true)
+            binding.searchView.afterTextChanged { searchString->
+                if(searchString == "")
+                {
+                    adapter.setData(allCountryDataResponse)
                 }
-                adapter.setData(filteredData)
+                else {
+                    val filteredData = allCountryDataResponse.filter {
+                        it.countryName!!.contains(searchString, ignoreCase = true)
+                    }
+                    adapter.setData(filteredData)
+                }
             }
         }
     }

@@ -35,7 +35,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
+                    android:textColor="@color/primaryTextColor"
                     android:textSize="12sp"
                     android:textAlignment="center"
                     android:text="@string/effected"/>
@@ -43,7 +43,7 @@
                     android:id="@+id/effectedTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
+                    android:textColor="@color/primaryTextColor"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:textAlignment="center"
@@ -81,7 +81,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
+                    android:textColor="@color/primaryTextColor"
                     android:textSize="12sp"
                     android:textAlignment="center"
                     android:text="@string/recovered"/>
@@ -89,7 +89,7 @@
                     android:id="@+id/recoveredTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
+                    android:textColor="@color/primaryTextColor"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:textAlignment="center"
@@ -127,7 +127,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
+                    android:textColor="@color/primaryTextColor"
                     android:textSize="12sp"
                     android:textAlignment="center"
                     android:text="@string/death"/>
@@ -135,7 +135,7 @@
                     android:id="@+id/deathTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
+                    android:textColor="@color/primaryTextColor"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:textAlignment="center"

@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/flagImage"
-        android:textColor="@color/white"
+        android:textColor="@color/primaryTextColor"
         android:layout_marginEnd="16dp"
         android:layout_toStartOf="@id/tickContainer"
         android:textSize="16sp" />

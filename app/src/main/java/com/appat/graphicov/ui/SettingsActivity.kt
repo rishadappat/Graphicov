@@ -5,10 +5,10 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.appat.graphicov.BuildConfig
 import com.appat.graphicov.R
 import com.appat.graphicov.databinding.ActivitySettingsBinding
@@ -26,8 +26,9 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.*
 
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.kieronquinn.monetcompat.app.MonetCompatActivity
 
-class SettingsActivity : AppCompatActivity() {
+class SettingsActivity : MonetCompatActivity() {
 
     private lateinit var binding: ActivitySettingsBinding
 
@@ -43,77 +44,80 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySettingsBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-        setSupportActionBar(binding.toolBar)
-        setViewModel()
+        lifecycleScope.launchWhenCreated {
+            monet.awaitMonetReady()
+            binding = ActivitySettingsBinding.inflate(layoutInflater)
+            val view = binding.root
+            setContentView(view)
+            setSupportActionBar(binding.toolBar)
+            setViewModel()
 
-        bottomsheet = binding.aboutBottomSheet
+            bottomsheet = binding.aboutBottomSheet
 
-        bottomsheet?.packageNameTextView?.text = BuildConfig.APPLICATION_ID
-        bottomsheet?.versionTextView?.text = BuildConfig.VERSION_NAME
+            bottomsheet?.packageNameTextView?.text = BuildConfig.APPLICATION_ID
+            bottomsheet?.versionTextView?.text = BuildConfig.VERSION_NAME
 
-        bottomSheetBehavior = from(bottomsheet!!.root)
-        bottomsheet?.openButton?.setOnClickListener {
-            if(bottomSheetBehavior.state == STATE_COLLAPSED) {
-                bottomSheetBehavior.state = STATE_EXPANDED
+            bottomSheetBehavior = from(bottomsheet!!.root)
+            bottomsheet?.openButton?.setOnClickListener {
+                if(bottomSheetBehavior.state == STATE_COLLAPSED) {
+                    bottomSheetBehavior.state = STATE_EXPANDED
+                }
             }
-        }
 
-        ViewCompat.setOnApplyWindowInsetsListener(bottomsheet!!.aboutBottomSheetRoot) { _, insets ->
-            statusBarHeight = insets.systemWindowInsetBottom
-            insets
-        }
-
-        binding.changeButton.setOnClickListener {
-            gotoCountrySelection()
-        }
-
-        bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback)
-
-        bottomsheet?.linkedInButton?.setOnClickListener {
-            Utility.openUrlInCustomTab(getString(R.string.linked_in_url), this)
-        }
-
-        bottomsheet?.gitHubButton?.setOnClickListener {
-            Utility.openUrlInCustomTab(getString(R.string.gitHub_url), this)
-        }
-
-        bottomsheet?.stackOverFlowButton?.setOnClickListener {
-            Utility.openUrlInCustomTab(getString(R.string.stackOverFlow_url), this)
-        }
-
-        bottomsheet?.emailButton?.setOnClickListener {
-            val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
-                data = Uri.parse("mailto:" + getString(R.string.email_address))
+            ViewCompat.setOnApplyWindowInsetsListener(bottomsheet!!.aboutBottomSheetRoot) { _, insets ->
+                statusBarHeight = insets.systemWindowInsetBottom
+                insets
             }
-            startActivity(Intent.createChooser(emailIntent, "Send Feedback"))
-        }
 
-        bottomsheet?.rateButton?.setOnClickListener {
-            Utility.openInAppReview(this)
-        }
+            binding.changeButton.setOnClickListener {
+                gotoCountrySelection()
+            }
 
-        bottomsheet?.shareButton?.setOnClickListener {
-            Utility.openShare(this)
-        }
+            bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback)
 
-        SharedPrefUtility.getAnalytics().observe(this, {
-            bottomsheet?.analyticsSwitch?.isChecked = it
-        })
+            bottomsheet?.linkedInButton?.setOnClickListener {
+                Utility.openUrlInCustomTab(getString(R.string.linked_in_url), this@SettingsActivity)
+            }
 
-        bottomsheet?.analyticsSwitch?.setOnCheckedChangeListener { _, isChecked ->
-            SharedPrefUtility.saveAnalytics(isChecked)
-            FirebaseAnalytics.getInstance(this).setAnalyticsCollectionEnabled(isChecked)
-        }
+            bottomsheet?.gitHubButton?.setOnClickListener {
+                Utility.openUrlInCustomTab(getString(R.string.gitHub_url), this@SettingsActivity)
+            }
 
-        bottomsheet?.apiSourceButton?.setOnClickListener {
-            Utility.openUrlInCustomTab(getString(R.string.apiSourceUrl), this)
-        }
+            bottomsheet?.stackOverFlowButton?.setOnClickListener {
+                Utility.openUrlInCustomTab(getString(R.string.stackOverFlow_url), this@SettingsActivity)
+            }
 
-        bottomsheet?.openInStore?.setOnClickListener {
-            Utility.openPlayStoreUrl(this)
+            bottomsheet?.emailButton?.setOnClickListener {
+                val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
+                    data = Uri.parse("mailto:" + getString(R.string.email_address))
+                }
+                startActivity(Intent.createChooser(emailIntent, "Send Feedback"))
+            }
+
+            bottomsheet?.rateButton?.setOnClickListener {
+                Utility.openInAppReview(this@SettingsActivity)
+            }
+
+            bottomsheet?.shareButton?.setOnClickListener {
+                Utility.openShare(this@SettingsActivity)
+            }
+
+            SharedPrefUtility.getAnalytics().observe(this@SettingsActivity, {
+                bottomsheet?.analyticsSwitch?.isChecked = it
+            })
+
+            bottomsheet?.analyticsSwitch?.setOnCheckedChangeListener { _, isChecked ->
+                SharedPrefUtility.saveAnalytics(isChecked)
+                FirebaseAnalytics.getInstance(this@SettingsActivity).setAnalyticsCollectionEnabled(isChecked)
+            }
+
+            bottomsheet?.apiSourceButton?.setOnClickListener {
+                Utility.openUrlInCustomTab(getString(R.string.apiSourceUrl), this@SettingsActivity)
+            }
+
+            bottomsheet?.openInStore?.setOnClickListener {
+                Utility.openPlayStoreUrl(this@SettingsActivity)
+            }
         }
     }
 

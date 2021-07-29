@@ -26,7 +26,7 @@
             android:background="@color/transparent"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:textColor="@color/white"
+            android:textColor="@color/primaryTextColor"
             android:text="@string/about"/>
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -77,7 +77,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/white"
+                                    android:textColor="@color/primaryTextColor"
                                     android:text="@string/package_name"/>
                                 <com.google.android.material.textview.MaterialTextView
                                     android:id="@+id/packageNameTextView"
@@ -116,7 +116,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/white"
+                                    android:textColor="@color/primaryTextColor"
                                     android:text="@string/version"/>
                                 <com.google.android.material.textview.MaterialTextView
                                     android:id="@+id/versionTextView"
@@ -154,7 +154,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/white"
+                                    android:textColor="@color/primaryTextColor"
                                     android:text="@string/apiSource"/>
                                 <com.google.android.material.textview.MaterialTextView
                                     android:id="@+id/apiSourceTextView"
@@ -213,7 +213,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/white"
+                                    android:textColor="@color/primaryTextColor"
                                     android:text="@string/linked_in"/>
                                 <com.google.android.material.textview.MaterialTextView
                                     android:layout_width="match_parent"
@@ -253,7 +253,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/white"
+                                    android:textColor="@color/primaryTextColor"
                                     android:text="@string/gitHub"/>
                                 <com.google.android.material.textview.MaterialTextView
                                     android:layout_width="match_parent"
@@ -294,7 +294,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/white"
+                                    android:textColor="@color/primaryTextColor"
                                     android:text="@string/stackOverFlow"/>
                                 <com.google.android.material.textview.MaterialTextView
                                     android:layout_width="match_parent"
@@ -333,7 +333,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/white"
+                                    android:textColor="@color/primaryTextColor"
                                     android:text="@string/email"/>
                                 <com.google.android.material.textview.MaterialTextView
                                     android:layout_width="match_parent"
@@ -391,7 +391,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/white"
+                                    android:textColor="@color/primaryTextColor"
                                     android:text="@string/rate"/>
                                 <com.google.android.material.textview.MaterialTextView
                                     android:layout_width="match_parent"
@@ -431,7 +431,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/white"
+                                    android:textColor="@color/primaryTextColor"
                                     android:text="@string/share"/>
                                 <com.google.android.material.textview.MaterialTextView
                                     android:layout_width="match_parent"
@@ -470,7 +470,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/white"
+                                    android:textColor="@color/primaryTextColor"
                                     android:text="@string/analytics"/>
                                 <com.google.android.material.textview.MaterialTextView
                                     android:layout_width="match_parent"

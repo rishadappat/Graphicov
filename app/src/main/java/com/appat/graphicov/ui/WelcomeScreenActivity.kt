@@ -3,14 +3,18 @@ package com.appat.graphicov.ui
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.appat.graphicov.databinding.ActivityWelcomeScreenBinding
 import com.appat.graphicov.models.requests.GeneralDataRequest
+import com.appat.graphicov.utilities.MonetColors
 import com.appat.graphicov.utilities.Utility
+import com.appat.graphicov.utilities.base.GraphicovActivity
+import com.appat.graphicov.utilities.extensions.isDarkThemeOn
 import com.appat.graphicov.utilities.sharedpreferences.SharedPrefUtility
 import com.appat.graphicov.viewmodel.AllCountriesDataViewModel
 import com.appat.graphicov.viewmodel.ViewModelFactory
@@ -19,10 +23,10 @@ import com.appat.graphicov.webservice.service.Status
 import com.appat.graphicov.webservice.service.WebService
 import com.appat.graphicov.webservice.serviceinterface.CovidService
 import com.bumptech.glide.Glide
+import com.kieronquinn.monetcompat.app.MonetCompatActivity
+import com.kieronquinn.monetcompat.core.MonetCompat
 
-class WelcomeScreenActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityWelcomeScreenBinding
+class WelcomeScreenActivity : GraphicovActivity<ActivityWelcomeScreenBinding>(ActivityWelcomeScreenBinding::inflate) {
 
     private lateinit var allCountriesDataViewModel: AllCountriesDataViewModel
 
@@ -30,26 +34,28 @@ class WelcomeScreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityWelcomeScreenBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-        Log.d("CurrentCountry", Utility.getCurrentCountryISO(this))
-        setViewModel()
-        binding.changeButton.setOnClickListener {
-            gotoCountrySelection()
-        }
-        binding.proceedButton.setOnClickListener {
-            gotoDashboard()
-        }
-        binding.selectCountryButton.setOnClickListener {
-            gotoCountrySelection()
+        lifecycleScope.launchWhenCreated {
+            monet.awaitMonetReady()
+
+            Log.d("CurrentCountry", Utility.getCurrentCountryISO(this@WelcomeScreenActivity))
+            setViewModel()
+            binding.changeButton.setOnClickListener {
+                gotoCountrySelection()
+            }
+            binding.proceedButton.setOnClickListener {
+                gotoDashboard()
+            }
+            binding.selectCountryButton.setOnClickListener {
+                gotoCountrySelection()
+            }
         }
     }
 
     private fun setViewModel()
     {
         val factory = ViewModelFactory(api)
-        allCountriesDataViewModel = ViewModelProvider(this, factory).get(AllCountriesDataViewModel::class.java)
+        allCountriesDataViewModel =
+            ViewModelProvider(this, factory).get(AllCountriesDataViewModel::class.java)
         getAllCountriesData()
     }
 

@@ -4,8 +4,8 @@ import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.appat.graphicov.R
 import com.appat.graphicov.databinding.ActivityHeatMapBinding
 import com.appat.graphicov.roomdb.entities.CountryDataEntity
@@ -24,8 +24,9 @@ import com.google.android.libraries.maps.SupportMapFragment
 import com.google.android.libraries.maps.model.CircleOptions
 import com.google.android.libraries.maps.model.LatLng
 import com.google.android.libraries.maps.model.MapStyleOptions
+import com.kieronquinn.monetcompat.app.MonetCompatActivity
 
-class HeatMapActivity : AppCompatActivity(), OnMapReadyCallback {
+class HeatMapActivity : MonetCompatActivity(), OnMapReadyCallback {
 
     val TAG = "HeatMapActivity"
 
@@ -41,14 +42,17 @@ class HeatMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHeatMapBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-        initMap()
-        setupViewModel()
+        lifecycleScope.launchWhenCreated {
+            monet.awaitMonetReady()
+            binding = ActivityHeatMapBinding.inflate(layoutInflater)
+            val view = binding.root
+            setContentView(view)
+            initMap()
+            setupViewModel()
 
-        binding.statusSelectionGroup.addOnButtonCheckedListener { _, _, _ ->
-            addDataToGoogleMap()
+            binding.statusSelectionGroup.addOnButtonCheckedListener { _, _, _ ->
+                addDataToGoogleMap()
+            }
         }
     }
 

@@ -1,5 +1,8 @@
 package com.appat.graphicov.utilities.extensions
 
+import android.content.Context
+import android.content.res.Configuration
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.content.res.Resources
 import android.view.View
 import android.view.ViewGroup
@@ -56,4 +59,9 @@ fun View.resize(width: Int, height: Int, animated: Boolean)
     params.width = width
     params.height = height
     this.layoutParams = params
+}
+
+fun Context.isDarkThemeOn(): Boolean {
+    return resources.configuration.uiMode and
+            Configuration.UI_MODE_NIGHT_MASK == UI_MODE_NIGHT_YES
 }
