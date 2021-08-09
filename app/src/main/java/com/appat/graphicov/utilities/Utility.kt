@@ -128,7 +128,7 @@ object Utility {
     fun getCurrentCountryISO(context: Context): String
     {
         val tm = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-        return tm.networkCountryIso.toUpperCase(Locale.getDefault())
+        return tm.networkCountryIso.uppercase(Locale.getDefault())
     }
 
     fun openInAppReview(context: AppCompatActivity)
