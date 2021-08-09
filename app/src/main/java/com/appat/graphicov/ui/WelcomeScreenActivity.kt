@@ -7,9 +7,12 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModelProvider
 import com.appat.graphicov.databinding.ActivityWelcomeScreenBinding
 import com.appat.graphicov.models.requests.GeneralDataRequest
+import com.appat.graphicov.ui.composableViews.WelcomeScreenViews
 import com.appat.graphicov.utilities.Utility
 import com.appat.graphicov.utilities.sharedpreferences.SharedPrefUtility
 import com.appat.graphicov.viewmodel.AllCountriesDataViewModel

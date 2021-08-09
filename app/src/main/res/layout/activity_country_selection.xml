@@ -25,26 +25,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:paddingVertical="10dp"
-            android:paddingHorizontal="20dp"
-            android:textColorHint="@color/white_tr_50"
-            android:textColor="@color/white"
-            android:hint="@string/search"
-            android:drawablePadding="15dp"
+            android:background="@color/colorPrimaryDark"
             android:drawableStart="@drawable/search"
-            android:background="@color/colorPrimaryDark"/>
+            android:drawablePadding="15dp"
+            android:hint="@string/search"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white_tr_50" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/searchView"
             android:layout_above="@id/confirmButton"
-            android:background="@color/windowBackground"/>
+            android:layout_below="@+id/searchView"
+            android:background="@color/windowBackground" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/confirmButton"
